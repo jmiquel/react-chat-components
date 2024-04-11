@@ -1,5 +1,6 @@
 import React, {
   ChangeEvent,
+  MouseEvent,
   FC,
   KeyboardEvent,
   ReactElement,
@@ -146,7 +147,8 @@ export const MessageInput: FC<MessageInputProps> = (props: MessageInputProps) =>
     }
   };
 
-  const handleSendClick = () => {
+  const handleSendClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation()
     sendMessage();
     if (fileRef.current) fileRef.current.value = "";
   };
